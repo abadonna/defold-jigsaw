@@ -1,0 +1,43 @@
+local HELPER = require "jigsaw.helper"
+local ZSTEP = 0.0000001
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	self.z = 0
+end
+
+function final(self)
+	msg.post(".", "release_input_focus")
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("trigger_response") and message.enter then
+		go.set_position(vmath.vector3(-10000, -10000, 0))
+		--pprint(message.other_id)
+		if not self.drag then
+			self.drag = message.other_id
+			self.z = self.z + ZSTEP
+			local pos = go.get_position(self.drag)
+			pos.z = self.z
+			self.offset = self.cursor - pos
+			go.set_position(pos, self.drag)
+		end
+	end
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("touch") and action.pressed then
+		self.cursor = HELPER.screen_to_world(action)
+		go.set_position(self.cursor)
+	elseif action_id == nil and self.drag then
+		local p = HELPER.screen_to_world(action)
+		go.set_position(p - self.offset, self.drag)
+	elseif action_id == hash("touch") and action.released and self.drag then
+		self.drag = nil
+	end
+end
