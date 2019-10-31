@@ -1,18 +1,19 @@
 go.property("col", 1)
 go.property("row", 1)
-go.property("offset_u", 0)
-go.property("offset_v", 0)
-go.property("width", 797)
-go.property("height", 797)
+
+local T = require "jigsaw.template"
 
 function init(self)
-	local u = self.offset_u / self.width
-	local v = self.offset_v / self.height
+	local cell = T.cells[self.col][self.row]
+
+	local u = cell.u / T.width
+	local v = cell.v / T.height
 
 	local scale = go.get_scale()
-	local w = (scale.x * scale.z) / self.width
-	local h = (scale.y * scale.z) / self.height
+	local w = cell.w / T.width
+	local h = cell.h / T.height
 
+	go.set_scale(vmath.vector3(cell.w * T.scale, cell.h * T.scale, 1))
 	model.set_constant("#model", "offset", vmath.vector4(u,v,w,h))
 end
 

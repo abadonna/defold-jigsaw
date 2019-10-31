@@ -26,16 +26,6 @@ embedded_instances {
   "    value: \"2.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
-  "  properties {\n"
-  "    id: \"offset_u\"\n"
-  "    value: \"399.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_v\"\n"
-  "    value: \"138.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
   "}\n"
   "components {\n"
   "  id: \"trigger\"\n"
@@ -78,8 +68,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 504.0
-    y: 232.0
+    x: 609.0
+    y: 228.0
     z: 0.0
   }
   rotation {
@@ -118,16 +108,6 @@ embedded_instances {
   "  properties {\n"
   "    id: \"row\"\n"
   "    value: \"4.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_u\"\n"
-  "    value: \"0.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_v\"\n"
-  "    value: \"537.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"
@@ -172,8 +152,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 108.0
-    y: 518.0
+    x: 329.0
+    y: 260.0
     z: 0.0
   }
   rotation {
@@ -212,16 +192,6 @@ embedded_instances {
   "  properties {\n"
   "    id: \"row\"\n"
   "    value: \"1.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_u\"\n"
-  "    value: \"0.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_v\"\n"
-  "    value: \"0.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"
@@ -266,8 +236,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 116.0
-    y: 82.0
+    x: 100.0
+    y: 100.0
     z: 0.0
   }
   rotation {
@@ -306,16 +276,6 @@ embedded_instances {
   "  properties {\n"
   "    id: \"row\"\n"
   "    value: \"2.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_u\"\n"
-  "    value: \"0.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_v\"\n"
-  "    value: \"137.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"
@@ -360,8 +320,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 154.0
-    y: 227.0
+    x: 161.0
+    y: 333.0
     z: 0.0
   }
   rotation {
@@ -400,16 +360,6 @@ embedded_instances {
   "  properties {\n"
   "    id: \"row\"\n"
   "    value: \"3.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_u\"\n"
-  "    value: \"0.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_v\"\n"
-  "    value: \"398.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"
@@ -454,8 +404,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 88.0
-    y: 368.0
+    x: 257.0
+    y: 517.0
     z: 0.0
   }
   rotation {
@@ -494,16 +444,6 @@ embedded_instances {
   "  properties {\n"
   "    id: \"row\"\n"
   "    value: \"1.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_u\"\n"
-  "    value: \"198.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_v\"\n"
-  "    value: \"0.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"
@@ -548,8 +488,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 310.0
-    y: 102.0
+    x: 523.0
+    y: 225.0
     z: 0.0
   }
   rotation {
@@ -588,16 +528,6 @@ embedded_instances {
   "  properties {\n"
   "    id: \"row\"\n"
   "    value: \"2.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_u\"\n"
-  "    value: \"138.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_v\"\n"
-  "    value: \"197.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"
@@ -642,8 +572,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 330.0
-    y: 255.0
+    x: 385.0
+    y: 84.0
     z: 0.0
   }
   rotation {
@@ -682,16 +612,6 @@ embedded_instances {
   "  properties {\n"
   "    id: \"row\"\n"
   "    value: \"3.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_u\"\n"
-  "    value: \"191.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_v\"\n"
-  "    value: \"337.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"
@@ -736,8 +656,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 330.0
-    y: 422.0
+    x: 436.0
+    y: 505.0
     z: 0.0
   }
   rotation {
@@ -776,16 +696,6 @@ embedded_instances {
   "  properties {\n"
   "    id: \"row\"\n"
   "    value: \"4.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_u\"\n"
-  "    value: \"140.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_v\"\n"
-  "    value: \"597.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"
@@ -830,8 +740,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 330.0
-    y: 580.0
+    x: 846.0
+    y: 397.0
     z: 0.0
   }
   rotation {
@@ -870,16 +780,6 @@ embedded_instances {
   "  properties {\n"
   "    id: \"row\"\n"
   "    value: \"1.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_u\"\n"
-  "    value: \"340.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_v\"\n"
-  "    value: \"0.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"
@@ -924,8 +824,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 486.0
-    y: 70.0
+    x: 593.0
+    y: 69.0
     z: 0.0
   }
   rotation {
@@ -964,16 +864,6 @@ embedded_instances {
   "  properties {\n"
   "    id: \"row\"\n"
   "    value: \"3.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_u\"\n"
-  "    value: \"339.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_v\"\n"
-  "    value: \"398.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"
@@ -1018,8 +908,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 500.0
-    y: 391.0
+    x: 559.0
+    y: 372.0
     z: 0.0
   }
   rotation {
@@ -1058,16 +948,6 @@ embedded_instances {
   "  properties {\n"
   "    id: \"row\"\n"
   "    value: \"4.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_u\"\n"
-  "    value: \"400.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_v\"\n"
-  "    value: \"538.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"
@@ -1112,8 +992,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 500.0
-    y: 544.0
+    x: 581.0
+    y: 521.0
     z: 0.0
   }
   rotation {
@@ -1152,16 +1032,6 @@ embedded_instances {
   "  properties {\n"
   "    id: \"row\"\n"
   "    value: \"1.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_u\"\n"
-  "    value: \"599.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_v\"\n"
-  "    value: \"0.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"
@@ -1206,8 +1076,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 679.0
-    y: 84.0
+    x: 763.0
+    y: 110.0
     z: 0.0
   }
   rotation {
@@ -1246,16 +1116,6 @@ embedded_instances {
   "  properties {\n"
   "    id: \"row\"\n"
   "    value: \"2.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_u\"\n"
-  "    value: \"538.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_v\"\n"
-  "    value: \"198.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"
@@ -1300,8 +1160,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 659.0
-    y: 228.0
+    x: 843.0
+    y: 233.0
     z: 0.0
   }
   rotation {
@@ -1340,16 +1200,6 @@ embedded_instances {
   "  properties {\n"
   "    id: \"row\"\n"
   "    value: \"3.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_u\"\n"
-  "    value: \"598.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_v\"\n"
-  "    value: \"338.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"
@@ -1394,8 +1244,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 668.0
-    y: 393.0
+    x: 708.0
+    y: 361.0
     z: 0.0
   }
   rotation {
@@ -1434,16 +1284,6 @@ embedded_instances {
   "  properties {\n"
   "    id: \"row\"\n"
   "    value: \"4.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_u\"\n"
-  "    value: \"538.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"offset_v\"\n"
-  "    value: \"598.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"
@@ -1488,8 +1328,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 674.0
-    y: 572.0
+    x: 753.0
+    y: 551.0
     z: 0.0
   }
   rotation {

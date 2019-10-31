@@ -1,9 +1,11 @@
 local HELPER = require "jigsaw.helper"
+local T = require "jigsaw.template"
 local ZSTEP = 0.0000001
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.z = 0
+	self.offset = vmath.vector3(0,0,0)
 end
 
 function final(self)
@@ -15,11 +17,48 @@ function update(self, dt)
 	-- Remove this function if not needed
 end
 
+local function check(drag_offset, col, row)
+	if col < 1 or row < 1 or col > #T.cells or row > #T.cells[col] then
+		return false
+	end
+	
+	local path = "part" .. col .. row
+	local target = T.cells[col][row]
+	local pos = go.get_position(path)
+	local offset = pos - vmath.vector3(target.x * T.scale, target.y * T.scale, pos.z)
+
+	if vmath.length(offset - drag_offset) <  T.distance * T.scale then
+		return offset
+	end
+	return nil
+end
+
+local function check_connections(path)
+	local url = msg.url()
+	url.path = path
+	url.fragment = "jigsaw_model"
+	local row = go.get(url, "row")
+	local col = go.get(url, "col")
+	local cell = T.cells[col][row]
+	local pos = go.get_position(path)
+	local center = vmath.vector3(cell.x * T.scale, cell.y * T.scale, pos.z)
+	local offset = pos - center
+	
+	offset = check(offset, col - 1, row) or 
+	check(offset, col + 1, row) or 
+	check(offset, col, row + 1) or 
+	check(offset, col, row - 1)
+	
+	if offset then
+		go.set_position(center + offset, path)
+	end
+end
+
 function on_message(self, message_id, message, sender)
 	if message_id == hash("trigger_response") and message.enter then
 		go.set_position(vmath.vector3(-10000, -10000, 0))
 		--pprint(message.other_id)
-		if not self.drag then
+		if self.touch and not self.drag then
 			self.drag = message.other_id
 			self.z = self.z + ZSTEP
 			local pos = go.get_position(self.drag)
@@ -34,10 +73,15 @@ function on_input(self, action_id, action)
 	if action_id == hash("touch") and action.pressed then
 		self.cursor = HELPER.screen_to_world(action)
 		go.set_position(self.cursor)
+		self.touch = true
 	elseif action_id == nil and self.drag then
 		local p = HELPER.screen_to_world(action)
 		go.set_position(p - self.offset, self.drag)
-	elseif action_id == hash("touch") and action.released and self.drag then
-		self.drag = nil
+	elseif action_id == hash("touch") and action.released then
+		if self.drag then
+			check_connections(self.drag)
+			self.drag = nil
+		end
+		self.touch = false
 	end
 end
