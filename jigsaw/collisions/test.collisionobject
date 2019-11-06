@@ -3,7 +3,7 @@ type: COLLISION_OBJECT_TYPE_TRIGGER
 mass: 0.0
 friction: 0.1
 restitution: 0.5
-group: "default"
+group: "test"
 mask: "default"
 embedded_collision_shape {
   shapes {
