@@ -1,6 +1,7 @@
 local HELPER = require "jigsaw.helper"
 local T = require "jigsaw.template"
 local ZSTEP = 0.0000001
+local ROTATION = 0.2
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -40,21 +41,19 @@ function update(self, dt)
 	end
 end
 
-local function check(drag_offset, col, row)
+local function rotate(v, pivot, angle, z)
+	local a = math.rad(angle)
+	local x = math.cos(a) * (v.x - pivot.x) - math.sin(a) * (v.y - pivot.y) + pivot.x
+	local y = math.sin(a) * (v.x - pivot.x) + math.cos(a) * (v.y - pivot.y) + pivot.y
+	return vmath.vector3(x, y, z)
+end
+
+local function find_element(self, col, row)
 	if col < 1 or row < 1 or col > #T.cells or row > #T.cells[col] then
 		return nil
 	end
-	
-	local path = "part" .. col .. row
-	local target = T.cells[col][row]
-	local pos = go.get_world_position(path)
-	local center = vmath.vector3(target.x * T.scale, target.y * T.scale, pos.z)
-	local offset = pos - center
-
-	if vmath.length(offset - drag_offset) <  T.distance * T.scale then
-		return go.get_id(path), offset
-	end
-	return nil
+	local id = go.get_id("part" .. col .. row)
+	return id
 end
 
 local function get_cell(path)
@@ -66,34 +65,78 @@ local function get_cell(path)
 	return T.cells[col][row], col, row
 end
 
+local function check(drag_center, drag_pos, drag_rotation, theta, id)
+	
+	--check angle
+	local q = go.get_world_rotation(id)
+	
+	q.x = -q.x
+	q.y = -q.y
+	q.z = -q.z
+	q = drag_rotation * q
+	local a = 2 * math.acos(q.w)
+
+	if math.abs(a) > 0.2 then
+		return nil
+	end
+
+	--check position	
+	local cell = get_cell(id)
+	local pos = go.get_world_position(id)
+	
+	local center = vmath.vector3(cell.x * T.scale, cell.y * T.scale, pos.z)
+	local offset = pos - center
+	
+	local drag_offset = drag_pos - rotate(drag_center, center, theta, drag_pos.z)
+
+	if vmath.length(offset - drag_offset) <  T.distance * T.scale then
+		return offset, center
+	end
+	return nil
+end
+
 local function check_connections(self)
 	local total = #self.drag
 	local parent_center = nil
 	local parent_offset = nil
+	local rotation = go.get_world_rotation(self.drag[1])
+	local parent_angle = 0
+	local parent_pivot = nil
 	self.children = {}
 	for i = 1, total do
 		local cell, col, row = get_cell(self.drag[i])
 		local pos = go.get_world_position(self.drag[i])
 		local center = vmath.vector3(cell.x * T.scale, cell.y * T.scale, pos.z)
-		local offset = pos - center
-		parent_center = i == 1 and center or parent_center
+
+		if i == 1 then
+			parent_center = center
+		end
 
 		local coord_offsets = {{col - 1, row}, {col + 1, row}, {col, row + 1}, {col, row - 1}}
 		for _, coord in ipairs(coord_offsets) do
-			local other, other_offset = check(offset, coord[1], coord[2])
+			local other = find_element(self, coord[1], coord[2])
 			if other then
 				local g, idx = find_group(self, other)
-				if g ~= self.drag then
+				local theta = go.get(g[1], "euler.z")
+				local offset, pivot = check(center, pos, rotation, theta, other)
+				
+				if offset and g ~= self.drag then
 					self.parent = self.drag[1]
 					if parent_offset then
 						cell  = get_cell(g[1])
 						local other_center = vmath.vector3(cell.x * T.scale, cell.y * T.scale, pos.z)
-						go.set_position(other_center + parent_offset, g[1])
-					else
-						go.set_position(parent_center + other_offset, self.drag[1])
-						parent_offset = other_offset
+						local fixed = rotate(other_center, parent_pivot, parent_angle, other_center.z)
+						go.set_position(fixed + parent_offset, g[1])
+						go.set(g[1], "euler.z", parent_angle)
+					else			
+						local fixed = rotate(parent_center, pivot, theta, parent_center.z)
+						go.set_position(fixed + offset, self.drag[1])
+						parent_offset = offset
+						parent_pivot = pivot
+						parent_angle = theta
+						go.set(self.drag[1], "euler.z", parent_angle)			
 					end
-					
+		
 					for j, part in ipairs(g) do
 						table.insert(self.drag, part)
 						table.insert(self.children, part) --set parent on next frame
@@ -111,11 +154,10 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("trigger_response") and message.enter then
 		go.set_position(vmath.vector3(-10000, -10000, 0))
-		if self.touch and not self.drag then
+		if (self.touch or self.rotate) and not self.drag then
 			self.drag = find_group(self, message.other_id)
 			self.z = self.z + ZSTEP
 			local pos = go.get_position(self.drag[1])
-			--pos.z = self.z
 			pos.z = 1
 			self.offset = self.cursor - pos
 			go.set_position(pos, self.drag[1])
@@ -128,18 +170,37 @@ function on_input(self, action_id, action)
 		self.cursor = HELPER.screen_to_world(action)
 		go.set_position(self.cursor)
 		self.touch = true
-	elseif action_id == nil and self.drag then
+	elseif action_id == hash("rmb") and action.pressed then
+		self.cursor = HELPER.screen_to_world(action)
+		go.set_position(self.cursor)
+		self.rotate = true
+	elseif action_id == nil and self.rotate and self.drag then
+		local d = math.abs(action.dx) > math.abs(action.dy) and action.dx or action.dy
+		local a = go.get(self.drag[1], "euler.z") + d * ROTATION
+--[[
+		if a < 0 then
+			a = 360 + a
+		end
+		--]]
+		
+		go.set(self.drag[1], "euler.z", a)
+
+	elseif action_id == nil and self.touch and self.drag then
 		local p = HELPER.screen_to_world(action)
 		go.set_position(p - self.offset, self.drag[1])
+	
 	elseif action_id == hash("touch") and action.released then
 		if self.drag then
 			local pos = go.get_position(self.drag[1])
 			pos.z = self.z
 			go.set_position(pos, self.drag[1])
-			
 			check_connections(self)
 			self.drag = nil
 		end
 		self.touch = false
+	elseif action_id == hash("rmb") and action.released then
+		self.rotate = false
+		--check_connections(self)
+		self.drag = nil
 	end
 end
