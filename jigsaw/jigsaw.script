@@ -94,12 +94,12 @@ local function check_connections(self)
 						parent_offset = other_offset
 					end
 					
-					for _, part in ipairs(g) do
+					for j, part in ipairs(g) do
 						table.insert(self.drag, part)
 						table.insert(self.children, part) --set parent on next frame
-						--local p = go.get_position(part)
-						--p.z = 1
-						--go.set_position(p, part)
+						local p = go.get_position(part)
+						p.z = j == 1 and 1 or 0
+						go.set_position(p, part)
 					end
 					table.remove(self.groups, idx)
 				end
@@ -115,8 +115,8 @@ function on_message(self, message_id, message, sender)
 			self.drag = find_group(self, message.other_id)
 			self.z = self.z + ZSTEP
 			local pos = go.get_position(self.drag[1])
-			pos.z = self.z
-			--pos.z = 1
+			--pos.z = self.z
+			pos.z = 1
 			self.offset = self.cursor - pos
 			go.set_position(pos, self.drag[1])
 		end
@@ -133,9 +133,9 @@ function on_input(self, action_id, action)
 		go.set_position(p - self.offset, self.drag[1])
 	elseif action_id == hash("touch") and action.released then
 		if self.drag then
-			--local pos = go.get_position(self.drag[1])
-			--pos.z = self.z
-			--go.set_position(pos, self.drag[1])
+			local pos = go.get_position(self.drag[1])
+			pos.z = self.z
+			go.set_position(pos, self.drag[1])
 			
 			check_connections(self)
 			self.drag = nil
