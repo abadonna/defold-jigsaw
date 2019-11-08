@@ -2,7 +2,12 @@ local HELPER = require "jigsaw.helper"
 local T = require "jigsaw.template"
 local ZSTEP = 0.0000001
 local ROTATION = 0.2
+local DISPERSION = 120
 
+local function get_id(col, row)
+	return go.get_id("part_" .. col .. "_" .. row)
+end
+	
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.z = 0
@@ -10,10 +15,42 @@ function init(self)
 	self.children = {}
 	self.parent = nil
 
+	math.randomseed(os.time())
+
+	local w = sys.get_config("display.width")
+	local h = sys.get_config("display.height")
+
+	local positions = {}
+
 	self.groups = {}
 	for col = 1, #T.cells do
 		for row = 1, #T.cells[col] do
-			table.insert(self.groups, {go.get_id("part" .. col .. row)})
+			local id = get_id(col, row)
+			table.insert(self.groups, {id})
+
+			--random rotation & position --------------
+			local a = math.random(0, 359)
+			go.set(id, "euler.z", a)
+			
+			while true do
+				local x = math.random(30, w - 30)
+				local y = math.random(30, h - 30)
+				local p = vmath.vector3(x, y, self.z)
+				local isValid = true
+				for _, v in ipairs(positions) do
+					if vmath.length(v - p) < DISPERSION then
+						isValid = false
+						break
+					end
+				end
+				if isValid then
+					go.set_position(p, id)
+					table.insert(positions, p)
+					self.z = self.z + ZSTEP
+					break
+				end
+			end
+			----------------------------------------
 		end
 	end
 end
@@ -52,7 +89,7 @@ local function find_element(self, col, row)
 	if col < 1 or row < 1 or col > #T.cells or row > #T.cells[col] then
 		return nil
 	end
-	local id = go.get_id("part" .. col .. row)
+	local id = get_id(col, row)
 	return id
 end
 
@@ -177,11 +214,6 @@ function on_input(self, action_id, action)
 	elseif action_id == nil and self.rotate and self.drag then
 		local d = math.abs(action.dx) > math.abs(action.dy) and action.dx or action.dy
 		local a = go.get(self.drag[1], "euler.z") + d * ROTATION
---[[
-		if a < 0 then
-			a = 360 + a
-		end
-		--]]
 		
 		go.set(self.drag[1], "euler.z", a)
 
@@ -200,7 +232,7 @@ function on_input(self, action_id, action)
 		self.touch = false
 	elseif action_id == hash("rmb") and action.released then
 		self.rotate = false
-		--check_connections(self)
+		check_connections(self)
 		self.drag = nil
 	end
 end

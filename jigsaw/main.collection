@@ -1,7 +1,7 @@
 name: "main"
 scale_along_z: 0
 embedded_instances {
-  id: "part32"
+  id: "part_3_2"
   data: "components {\n"
   "  id: \"jigsaw_model\"\n"
   "  component: \"/jigsaw/jigsaw_model.script\"\n"
@@ -85,7 +85,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "part14"
+  id: "part_1_4"
   data: "components {\n"
   "  id: \"jigsaw_model\"\n"
   "  component: \"/jigsaw/jigsaw_model.script\"\n"
@@ -169,7 +169,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "part11"
+  id: "part_1_1"
   data: "components {\n"
   "  id: \"jigsaw_model\"\n"
   "  component: \"/jigsaw/jigsaw_model.script\"\n"
@@ -253,7 +253,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "part12"
+  id: "part_1_2"
   data: "components {\n"
   "  id: \"jigsaw_model\"\n"
   "  component: \"/jigsaw/jigsaw_model.script\"\n"
@@ -337,7 +337,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "part13"
+  id: "part_1_3"
   data: "components {\n"
   "  id: \"jigsaw_model\"\n"
   "  component: \"/jigsaw/jigsaw_model.script\"\n"
@@ -421,7 +421,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "part21"
+  id: "part_2_1"
   data: "components {\n"
   "  id: \"jigsaw_model\"\n"
   "  component: \"/jigsaw/jigsaw_model.script\"\n"
@@ -505,7 +505,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "part22"
+  id: "part_2_2"
   data: "components {\n"
   "  id: \"jigsaw_model\"\n"
   "  component: \"/jigsaw/jigsaw_model.script\"\n"
@@ -589,7 +589,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "part23"
+  id: "part_2_3"
   data: "components {\n"
   "  id: \"jigsaw_model\"\n"
   "  component: \"/jigsaw/jigsaw_model.script\"\n"
@@ -673,7 +673,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "part24"
+  id: "part_2_4"
   data: "components {\n"
   "  id: \"jigsaw_model\"\n"
   "  component: \"/jigsaw/jigsaw_model.script\"\n"
@@ -757,7 +757,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "part31"
+  id: "part_3_1"
   data: "components {\n"
   "  id: \"jigsaw_model\"\n"
   "  component: \"/jigsaw/jigsaw_model.script\"\n"
@@ -841,7 +841,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "part33"
+  id: "part_3_3"
   data: "components {\n"
   "  id: \"jigsaw_model\"\n"
   "  component: \"/jigsaw/jigsaw_model.script\"\n"
@@ -925,7 +925,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "part34"
+  id: "part_3_4"
   data: "components {\n"
   "  id: \"jigsaw_model\"\n"
   "  component: \"/jigsaw/jigsaw_model.script\"\n"
@@ -1009,7 +1009,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "part41"
+  id: "part_4_1"
   data: "components {\n"
   "  id: \"jigsaw_model\"\n"
   "  component: \"/jigsaw/jigsaw_model.script\"\n"
@@ -1093,7 +1093,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "part42"
+  id: "part_4_2"
   data: "components {\n"
   "  id: \"jigsaw_model\"\n"
   "  component: \"/jigsaw/jigsaw_model.script\"\n"
@@ -1177,7 +1177,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "part43"
+  id: "part_4_3"
   data: "components {\n"
   "  id: \"jigsaw_model\"\n"
   "  component: \"/jigsaw/jigsaw_model.script\"\n"
@@ -1261,7 +1261,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "part44"
+  id: "part_4_4"
   data: "components {\n"
   "  id: \"jigsaw_model\"\n"
   "  component: \"/jigsaw/jigsaw_model.script\"\n"
