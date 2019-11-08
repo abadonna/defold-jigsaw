@@ -133,6 +133,10 @@ local function check(drag_center, drag_pos, drag_rotation, theta, id)
 end
 
 local function check_connections(self)
+	if not self.drag then
+		return
+	end
+	
 	local total = #self.drag
 	local parent_center = nil
 	local parent_offset = nil
