@@ -16,3 +16,7 @@ input_method = HiddenInputField
 [project]
 title = Jigsaw Puzzle
 
+[html5]
+heap_size = 128
+cssfile = /builtins/manifests/web/dark_theme.css
+
