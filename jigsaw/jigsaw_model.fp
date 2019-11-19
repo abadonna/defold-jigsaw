@@ -13,7 +13,7 @@ void main()
 {
     vec4 color = texture2D(tex0, var_texcoord0.xy);
     vec4 mask = texture2D(tex1, var_texcoord1.xy);
-    color.w = mask.w;
+    color = color * mask.w;
 
     //outline fx
     float a = -4.0 * mask.w;
